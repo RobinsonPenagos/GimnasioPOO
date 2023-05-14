@@ -1,0 +1,96 @@
+Codigo de Java  explicado sobre como esta realizado.
+
+```
+import java.util.Scanner;
+
+public class Cliente {
+```
+- Se importa la clase Scanner del paquete java.util para poder leer la entrada del usuario.
+- Se declara la clase Cliente, que será utilizada para almacenar la información del cliente del gimnasio.
+
+```
+    private String nombre;
+    private int edad;
+```
+- Se declaran las variables privadas que almacenarán la información del nombre y edad del cliente.
+
+```
+    public Cliente(String nombre, int edad) {
+        this.nombre = nombre;
+        this.edad = edad;
+    }
+```
+- Se define el constructor de la clase Cliente que recibe el nombre y edad del cliente como argumentos.
+- Se asignan los valores de los argumentos a las variables privadas de la clase.
+
+```
+    public String getNombre() {
+        return nombre;
+    }
+```
+- Se define un método público que devuelve el nombre del cliente.
+
+```
+    public int getEdad() {
+        return edad;
+    }
+```
+- Se define un método público que devuelve la edad del cliente.
+
+```
+}
+```
+- Se cierra la clase Cliente.
+
+```
+public class Programa {
+```
+- Se declara la clase Programa, que será utilizada para ejecutar el programa del gimnasio.
+
+```
+    private static final double VALOR_MENSUAL = 50000;
+```
+- Se declara la constante VALOR_MENSUAL que almacenará el valor de la suscripción mensual.
+
+```
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Bienvenida al gimnasio
+        System.out.println("Bienvenidos al GYM SPARTACO");
+        System.out.println("***************************");
+        System.out.println("Valor del mes: 50.000");
+        System.out.println("De 4 a 6 meses obtendras un 10% de descuento:");
+        System.out.println("De 7 a 10 meses obtendras un 20% de descuento:");
+        System.out.println("De 10 meses en adelante obtendras un 30% de descuento:\n");
+
+        // Solicitud de información del cliente
+        System.out.print("Ingrese el nombre del cliente: ");
+        String nombre = scanner.nextLine();
+        System.out.print("Ingrese su edad: ");
+        int edad = scanner.nextInt();
+        System.out.print("Por cuantos meses realizara la suscripcion?: ");
+        int meses = scanner.nextInt();
+        scanner.close();
+
+        // Creación del objeto Cliente
+        Cliente cliente = new Cliente(nombre, edad);
+
+        // Cálculo del descuento
+        double descuento;
+        if (meses <= 3) {
+            descuento = 0;
+        } else if (meses <= 6) {
+            descuento = VALOR_MENSUAL * meses * 0.1;
+        } else if (meses <= 9) {
+            descuento = VALOR_MENSUAL * meses * 0.2;
+        } else {
+            descuento = VALOR_MENSUAL * meses * 0.3;
+        }
+
+        // Cálculo del total a pagar
+        double total = VALOR_MENSUAL * meses - descuento;
+
+        // Mostrar resultados
+        System.out.println("\nSu nombre es: " + cliente.getNombre() + ". Su edad es de: " + cliente.getEdad() + " años.");
+        System.out.println("Tu suscripcion es por " + meses + " meses. El costo total sin descuentos es
