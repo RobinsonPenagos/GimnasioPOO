@@ -28,13 +28,16 @@ public class Programa {
         int meses = sc.nextInt();
 
         sc.close();
-
+        ///Crea el objeto cliente y lo asigna  a la variable
+        
         Cliente cliente = new Cliente(nombre, edad, meses);
 
         // Calcular descuento
         double total = cliente.getMeses() * VALOR_MES;
         double descuento = 0;
-
+        
+        //Se crea la condicion que verifica el numero de meses ingresados y valida que descuento hacer
+        
         if (cliente.getMeses() > 3 && cliente.getMeses() <= 6) {
             descuento = total * DESCUENTO_4_6_MESES;
         } else if (cliente.getMeses() > 6 && cliente.getMeses() < 10) {
